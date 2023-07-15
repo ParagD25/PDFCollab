@@ -1,0 +1,17 @@
+<div class="download-pdf">
+    <h2>Download</h2>
+
+    <form class="" method="GET" action="">
+        <input type="text" id="pdf-url" name="download_pdf" placeholder="Enter URL"/>
+        <a download class="btn btn--dark" id="download-link" href="">Download PDF</a>
+    </form>
+</div>
+
+<script>
+    document.getElementById("pdf-url").addEventListener("input", function() {
+        var url = this.value;
+        var downloadLink = document.getElementById("download-link");
+        downloadLink.href = url;
+    });
+
+</script>

@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<main class="profile-page layout layout--2">
+  <div class="container">
+
+    <div class="topics">
+      <!-- Topics Section Start -->
+      {% include 'fileManager/topic_section.html' %}
+    <!-- Topics Section End -->
+
+      <!-- Download Section Start -->
+    {% include 'fileManager/download_section.html' %}
+      <!-- Download Section Start -->
+    </div>
+
+    <!-- Feed Section Start -->
+    <div class="feedList">
+      <div class="profile">
+        <div class="profile__avatar">
+          <div class="avatar avatar--large active">
+            <img src="{% static 'images/avatar1.png' %}" />
+          </div>
+        </div>
+        <div class="profile__info">
+          <h3>{{user.email}}</h3>
+          <p>@{{user.username}}</p>
+          {% if request.user == user %}
+          <a href="{% url 'edit-user' %}" class="btn btn--main btn--pill">Edit Profile</a>
+          {% endif %}
+        </div>
+
+      </div>
+
+      <div class="feedList__header">
+        <div>
+          <h2>Feeds by : {{user.username}}</a>
+          </h2>
+        </div>
+      </div>
+      {% include 'fileManager/feed_section.html' %}
+
+
+    </div>
+    <!-- Feed Section End -->
+
+  </div>
+</main>
+{% endblock content %}
