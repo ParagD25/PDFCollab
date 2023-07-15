@@ -52,5 +52,5 @@ python manage.py runserver
 
 ### App Preview :
 
-
+<b><i><a href="https://drive.google.com/drive/folders/18_54cQZiuRMIXPNlEAdj7yM5JhGgBCX3?usp=sharing">PDF Manager Preview</a></b></i>
 
