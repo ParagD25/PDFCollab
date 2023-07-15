@@ -61,13 +61,6 @@ def registerPage(request):
 
 
 def home(request):
-    # if request.method == 'POST':
-    #     file = request.POST.get('file')
-    #     document = Feed.objects.create(file=file)
-    #     document.save()
-    #     return HttpResponse("File Uploaded")
-    # return render(request, 'fileManager/view_download.html')
-
     search_element = (
         request.GET.get("search") if request.GET.get("search") != None else ""
     )
