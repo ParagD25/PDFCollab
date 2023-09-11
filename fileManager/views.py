@@ -69,8 +69,7 @@ def home(request):
     )
 
     topics = Topic.objects.all()
-    topic_count = Topic.objects.all()[0:5]
-    context = {"feeds": feeds, "topics": topics, "topic_count": topic_count}
+    context = {"feeds": feeds, "topics": topics}
     return render(request, "fileManager/home.html", context)
 
 
@@ -147,12 +146,12 @@ def editFeed(request, pk):
         feed.title = request.POST.get("title")
         feed.topic = topic
         feed.description = request.POST.get("description")
-        feed.file = request.FILES["file"]
+        # feed.file = request.FILES["file"]
         feed.save()
         return redirect("home")
 
     context = {"form": form, "topics": topics, "feed": feed}
-    return render(request, "fileManager/feed_form.html", context)
+    return render(request, "fileManager/feed_edit.html", context)
 
 
 @login_required(login_url="/login")
@@ -222,9 +221,8 @@ def editUser(request):
 def topicsPage(request):
     search = request.GET.get("search") if request.GET.get("search") != None else ""
     topics = Topic.objects.filter(topic__icontains=search)
-    topic_count = Topic.objects.filter(topic__icontains=search)[0:5]
     return render(
         request,
         "fileManager/topics.html",
-        {"topics": topics, "topic_count": topic_count},
+        {"topics": topics},
     )

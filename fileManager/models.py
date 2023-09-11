@@ -14,12 +14,12 @@ class Feed(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    file = models.FileField(upload_to='uploads/')
+    file = models.FileField(upload_to="uploads/")
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-updated', '-created']
+        ordering = ["-updated", "-created"]
 
     def __str__(self):
         return self.title
@@ -27,13 +27,16 @@ class Feed(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    feed = models.ForeignKey(Feed, on_delete=models.CASCADE, related_name='commented_feed')
+    feed = models.ForeignKey(
+        Feed, on_delete=models.CASCADE, related_name="commented_feed"
+    )
     comment_body = models.TextField()
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    # parent = models.ForeignKey("self", on_delete=models.CASCADE, null=True)
 
     class Meta:
-        ordering = ['-updated', '-created']
+        ordering = ["-updated", "-created"]
 
     def __str__(self):
         return self.comment_body[:50]

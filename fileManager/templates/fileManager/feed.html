@@ -79,7 +79,7 @@
                     <span class="feed__topics">{{feed.topic}}</span>
 
                     <div>
-                        <a class="btn btn--main" href="{{feed.file.url}}">Preview PDF</a>
+                        <a class="btn btn--main" href="{{feed.file.url}}" target="_blank">Preview PDF</a>
                         <a class="btn btn--main" id="share" data-url="{{feed.file.url}}" href="#">Share</a>
 
                     </div>
@@ -96,7 +96,7 @@
                     </div>
                     {% endif %}
 
-                    <div class="threads scroll">
+                    <div class="threads scroll" id="scroller">
 
 
                         {% for comment in feed_comments %}
